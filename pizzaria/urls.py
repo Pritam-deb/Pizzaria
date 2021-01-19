@@ -16,14 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from main_page import views
-
+#from accounts import views as av
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main_page.urls')),
-    path('menu', views.menu, name='menu'),
-    path('blog', views.blog, name='blog'),
-    path('about', views.about, name='about'),
-    path('services', views.services, name='services'),
-    path('contact', views.contact, name='contact'),
+    #path('accounts/',include('django.contrib.auth.urls')),
+    #path('accounts/',av.register_request),
+    #path('accounts/',include('accounts.urls')),
+    #path('menu', views.menu, name='menu'),
+    #path('blog', views.blog, name='blog'),
+    #path('about', views.about, name='about'),
+    #path('services', views.services, name='services'),
+    #path('contact', views.contact, name='contact'),
+    #path('login', views.login, name='login'),
+
 
 ]
