@@ -32,7 +32,10 @@
   </head>
   <body>
   	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
+      <span id='hello-msg'>Hello, {{request.user}}</span><br>
+        <span><a href="{% url 'logout' %}">Logout</a></span>
+      <div class="container">
+
 		      <a class="navbar-brand" href="main_page.html"><span class="flaticon-pizza-1 mr-1"></span>Pizzaria<br><small>Umami</small></a>
 		      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 		        <span class="oi oi-menu"></span> Expand
@@ -45,10 +48,12 @@
             <li class="nav-item {% if request.resolver_match.url_name == 'blog' %}active{% endif %}"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
 	          <li class="nav-item {% if request.resolver_match.url_name == 'contact' %}active{% endif %}"><a href="{% url 'contact' %}" class="nav-link">Contact Us</a></li>
             <li class="nav-item {% if request.resolver_match.url_name == 'about' %}active{% endif %}"><a href="{% url 'about' %}" class="nav-link">About Us</a></li>
-            <li class="nav-item {% if request.resolver_match.url_name == 'log-in' %}active{% endif %}"><a href="{% url 'login' %}" class="nav-link">Log-In</a></li>
+            <li class="nav-item {% if request.resolver_match.url_name == 'register' %}active{% endif %}"><a href="{% url 'register' %}" class="nav-link">Register</a></li>
+            <li class="nav-item {% if request.resolver_match.url_name == 'login' %}active{% endif %}"><a href="{% url 'login' %}" class="nav-link">Log-In</a></li>
 
 	        </ul>
 	      </div>
+
 		  </div>
 	  </nav>
     <!-- END nav -->
