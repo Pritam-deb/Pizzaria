@@ -29,11 +29,62 @@
     <link rel="stylesheet" href="{% static 'main_page/css/flaticon.css' %}">
     <link rel="stylesheet" href="{% static 'main_page/css/icomoon.css' %}">
     <link rel="stylesheet" href="{% static 'main_page/css/style.css' %}">
+    <script type="text/javascript">
+		var user = '{{request.user}}'
+    function getToken(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getToken('csrftoken');
+
+function getCookie(name) {
+    // Split cookie string and get all individual name=value pairs in an array
+    var cookieArr = document.cookie.split(";");
+
+    // Loop through the array elements
+    for(var i = 0; i < cookieArr.length; i++) {
+        var cookiePair = cookieArr[i].split("=");
+
+        /* Removing whitespace at the beginning of the cookie name
+        and compare it with the given string */
+        if(name == cookiePair[0].trim()) {
+            // Decode the cookie value and return
+            return decodeURIComponent(cookiePair[1]);
+        }
+    }
+
+    // Return null if not found
+    return null;
+}
+var cart = JSON.parse(getCookie('cart'))
+
+if (cart == undefined){
+  cart = {}
+  console.log('Cart Created!', cart)
+  document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+}
+console.log('Cart:', cart)
+
+
+    </script>
   </head>
   <body>
   	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-      <span id='hello-msg'>Hello, {{request.user}}</span><br>
-        <span><a href="{% url 'logout' %}">Logout</a></span>
+      <span id='hello-msg'>Hello, {{request.user}}</span>
+      <div class="form-inline my-2 my-lg-0">
+        <span><a href="{% url 'logout' %}" class="btn btn-warning">Logout</a></span>
+      </div>
       <div class="container">
 
 		      <a class="navbar-brand" href="main_page.html"><span class="flaticon-pizza-1 mr-1"></span>Pizzaria<br><small>Umami</small></a>
@@ -53,6 +104,16 @@
 
 	        </ul>
 	      </div>
+
+        <div class="form-inline my-2 my-lg-0">
+          
+
+            <a href="{% url 'cart' %}">
+         <img  id="cart-icon" src="{% static 'main_page/images/cart.png' %}">
+          </a>
+          <p id="cart-total">{{cartItems}}</p>
+
+        </div>
 
 		  </div>
 	  </nav>
@@ -137,7 +198,7 @@
       <div class="col-md-12 text-center">
 
         <p>
-Made with<i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Pritam and Shivam</a>
+Made with<i class="icon-heart" aria-hidden="true"></i> by Pritam and Shivam</a>
 </p>
       </div>
     </div>
@@ -167,6 +228,6 @@ Made with<i class="icon-heart" aria-hidden="true"></i> by <a href="https://color
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="{% static 'main_page/js/google-map.js' %}"></script>
 <script src="{% static 'main_page/js/main.js' %}"></script>
-
+<script src="{% static 'main_page/js/cart.js' %}"></script>
 </body>
 </html>

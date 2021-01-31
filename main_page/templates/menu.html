@@ -37,67 +37,20 @@
     	</div>
     	<div class="container-wrap">
     		<div class="row no-gutters d-flex">
+          {% for product in products %}
     			<div class="col-lg-4 d-flex ftco-animate">
     				<div class="services-wrap d-flex">
-    					<a href="#" class="img" style="background-image: url({% static 'main_page/images/pizza-1.jpg' %});"></a>
+    					<a href="#" class="img" style="background-image: url({{ product.imageURL }});"></a>
+                <!--<img href="#" src="{{ product.image.url }}"  style="background-image;" />-->
     					<div class="text p-4">
-    						<h3>Italian Pizza</h3>
-    						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia </p>
-    						<p class="price"><span>$2.90</span> <a href="#" class="ml-2 btn btn-white btn-outline-white">Order</a></p>
+    						<h3>{{product.name}}</h3>
+    						<p>{{product.desc}} </p>
+    						<p class="price"><span>₹{{product.price}}</span> <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button></p>
     					</div>
     				</div>
     			</div>
-    			<div class="col-lg-4 d-flex ftco-animate">
-    				<div class="services-wrap d-flex">
-    					<a href="#" class="img" style="background-image: url({% static 'main_page/images/pizza-2.jpg' %});"></a>
-    					<div class="text p-4">
-    						<h3>Greek Pizza</h3>
-    						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-    						<p class="price"><span>$2.90</span> <a href="#" class="ml-2 btn btn-white btn-outline-white">Order</a></p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-lg-4 d-flex ftco-animate">
-    				<div class="services-wrap d-flex">
-    					<a href="#" class="img" style="background-image: url({% static 'main_page/images/pizza-3.jpg' %});"></a>
-    					<div class="text p-4">
-    						<h3>Caucasian Pizza</h3>
-    						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-    						<p class="price"><span>$2.90</span> <a href="#" class="ml-2 btn btn-white btn-outline-white">Order</a></p>
-    					</div>
-    				</div>
-    			</div>
+          {% endfor %}
 
-    			<div class="col-lg-4 d-flex ftco-animate">
-    				<div class="services-wrap d-flex">
-    					<a href="#" class="img order-lg-last" style="background-image: url({% static 'main_page/images/pizza-4.jpg' %});"></a>
-    					<div class="text p-4">
-    						<h3>American Pizza</h3>
-    						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia </p>
-    						<p class="price"><span>$2.90</span> <a href="#" class="ml-2 btn btn-white btn-outline-white">Order</a></p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-lg-4 d-flex ftco-animate">
-    				<div class="services-wrap d-flex">
-    					<a href="#" class="img order-lg-last" style="background-image: url({% static 'main_page/images/pizza-5.jpg' %});"></a>
-    					<div class="text p-4">
-    						<h3>Tomatoe Pie</h3>
-    						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-    						<p class="price"><span>$2.90</span> <a href="#" class="ml-2 btn btn-white btn-outline-white">Order</a></p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-lg-4 d-flex ftco-animate">
-    				<div class="services-wrap d-flex">
-    					<a href="#" class="img order-lg-last" style="background-image: url({% static 'main_page/images/pizza-6.jpg' %});"></a>
-    					<div class="text p-4">
-    						<h3>Margherita</h3>
-    						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-    						<p class="price"><span>$2.90</span> <a href="#" class="ml-2 btn btn-white btn-outline-white">Order</a></p>
-    					</div>
-    				</div>
-    			</div>
     		</div>
     	</div>
 
@@ -116,7 +69,7 @@
         			<div class="desc pl-3">
 	        			<div class="d-flex text align-items-center">
 	        				<h3><span>Italian Pizza</span></h3>
-	        				<span class="price">$20.00</span>
+	        				<span class="price">₹20.00</span>
 	        			</div>
 	        			<div class="d-block">
 	        				<p>A small river named Duden flows by their place and supplies</p>
@@ -128,7 +81,7 @@
         			<div class="desc pl-3">
 	        			<div class="d-flex text align-items-center">
 	        				<h3><span>Hawaiian Pizza</span></h3>
-	        				<span class="price">$29.00</span>
+	        				<span class="price">₹29.00</span>
 	        			</div>
 	        			<div class="d-block">
 	        				<p>A small river named Duden flows by their place and supplies</p>
@@ -140,7 +93,7 @@
         			<div class="desc pl-3">
 	        			<div class="d-flex text align-items-center">
 	        				<h3><span>Greek Pizza</span></h3>
-	        				<span class="price">$20.00</span>
+	        				<span class="price">₹20.00</span>
 	        			</div>
 	        			<div class="d-block">
 	        				<p>A small river named Duden flows by their place and supplies</p>
@@ -152,7 +105,7 @@
         			<div class="desc pl-3">
 	        			<div class="d-flex text align-items-center">
 	        				<h3><span>Bacon Crispy Thins</span></h3>
-	        				<span class="price">$20.00</span>
+	        				<span class="price">₹20.00</span>
 	        			</div>
 	        			<div class="d-block">
 	        				<p>A small river named Duden flows by their place and supplies</p>
@@ -167,7 +120,7 @@
         			<div class="desc pl-3">
 	        			<div class="d-flex text align-items-center">
 	        				<h3><span>Hawaiian Special</span></h3>
-	        				<span class="price">$49.91</span>
+	        				<span class="price">₹49.91</span>
 	        			</div>
 	        			<div class="d-block">
 	        				<p>A small river named Duden flows by their place and supplies</p>
@@ -179,7 +132,7 @@
         			<div class="desc pl-3">
 	        			<div class="d-flex text align-items-center">
 	        				<h3><span>Ultimate Overload</span></h3>
-	        				<span class="price">$20.00</span>
+	        				<span class="price">₹20.00</span>
 	        			</div>
 	        			<div class="d-block">
 	        				<p>A small river named Duden flows by their place and supplies</p>
@@ -191,7 +144,7 @@
         			<div class="desc pl-3">
 	        			<div class="d-flex text align-items-center">
 	        				<h3><span>Bacon Pizza</span></h3>
-	        				<span class="price">$20.00</span>
+	        				<span class="price">₹20.00</span>
 	        			</div>
 	        			<div class="d-block">
 	        				<p>A small river named Duden flows by their place and supplies</p>
@@ -203,7 +156,7 @@
         			<div class="desc pl-3">
 	        			<div class="d-flex text align-items-center">
 	        				<h3><span>Ham &amp; Pineapple</span></h3>
-	        				<span class="price">$20.00</span>
+	        				<span class="price">₹20.00</span>
 	        			</div>
 	        			<div class="d-block">
 	        				<p>A small river named Duden flows by their place and supplies</p>
@@ -245,8 +198,8 @@
 		              				<div class="text">
 		              					<h3><a href="#">Itallian Pizza</a></h3>
 		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-		              					<p class="price"><span>$2.90</span></p>
-		              					<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
+		              					<p class="price"><span>₹2.90</span></p>
+		              					<p><button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button></p></p>
 		              				</div>
 		              			</div>
 		              		</div>
@@ -256,8 +209,8 @@
 		              				<div class="text">
 		              					<h3><a href="#">Itallian Pizza</a></h3>
 		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-		              					<p class="price"><span>$2.90</span></p>
-		              					<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
+		              					<p class="price"><span>₹2.90</span></p>
+		              					<p><button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button></p></p>
 		              				</div>
 		              			</div>
 		              		</div>
@@ -267,8 +220,8 @@
 		              				<div class="text">
 		              					<h3><a href="#">Itallian Pizza</a></h3>
 		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-		              					<p class="price"><span>$2.90</span></p>
-		              					<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
+		              					<p class="price"><span>₹2.90</span></p>
+		              					<p><button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button></p></p>
 		              				</div>
 		              			</div>
 		              		</div>
@@ -277,39 +230,21 @@
 
 		              <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
 		                <div class="row">
+		            <!--
+                      {% for drink in drinks %}
 		              		<div class="col-md-4 text-center">
 		              			<div class="menu-wrap">
-		              				<a href="#" class="menu-img img mb-4" style="background-image: url({% static 'main_page/images/drink-1.jpg' %});"></a>
+		              				<a href="#" class="menu-img img mb-4" style="background-image: url({{ drink.imageURL }});"></a>
 		              				<div class="text">
-		              					<h3><a href="#">Lemonade Juice</a></h3>
-		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-		              					<p class="price"><span>$2.90</span></p>
-		              					<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
+		              					<h3><a href="#">{{drink.name}}</a></h3>
+		              					<p>{{drink.desc}}</p>
+		              					<p class="price"><span>₹{{drink.price}}</span></p>
+		              					<p> <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button></p>
 		              				</div>
 		              			</div>
 		              		</div>
-		              		<div class="col-md-4 text-center">
-		              			<div class="menu-wrap">
-		              				<a href="#" class="menu-img img mb-4" style="background-image: url({% static 'main_page/images/drink-2.jpg' %});"></a>
-		              				<div class="text">
-		              					<h3><a href="#">Pineapple Juice</a></h3>
-		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-		              					<p class="price"><span>$2.90</span></p>
-		              					<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-		              				</div>
-		              			</div>
-		              		</div>
-		              		<div class="col-md-4 text-center">
-		              			<div class="menu-wrap">
-		              				<a href="#" class="menu-img img mb-4" style="background-image: url({% static 'main_page/images/drink-3.jpg' %});"></a>
-		              				<div class="text">
-		              					<h3><a href="#">Soda Drinks</a></h3>
-		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-		              					<p class="price"><span>$2.90</span></p>
-		              					<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-		              				</div>
-		              			</div>
-		              		</div>
+                      {% endfor %}
+-->
 		              	</div>
 		              </div>
 
@@ -321,8 +256,8 @@
 		              				<div class="text">
 		              					<h3><a href="#">Itallian Pizza</a></h3>
 		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-		              					<p class="price"><span>$2.90</span></p>
-		              					<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
+		              					<p class="price"><span>₹2.90</span></p>
+		              					<p><button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button></p></p>
 		              				</div>
 		              			</div>
 		              		</div>
@@ -332,8 +267,8 @@
 		              				<div class="text">
 		              					<h3><a href="#">Itallian Pizza</a></h3>
 		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-		              					<p class="price"><span>$2.90</span></p>
-		              					<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
+		              					<p class="price"><span>₹2.90</span></p>
+		              					<p><button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button></p></p>
 		              				</div>
 		              			</div>
 		              		</div>
@@ -343,8 +278,8 @@
 		              				<div class="text">
 		              					<h3><a href="#">Itallian Pizza</a></h3>
 		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-		              					<p class="price"><span>$2.90</span></p>
-		              					<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
+		              					<p class="price"><span>₹2.90</span></p>
+		              					<p><button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button></p></p>
 		              				</div>
 		              			</div>
 		              		</div>
@@ -359,8 +294,8 @@
 		              				<div class="text">
 		              					<h3><a href="#">Itallian Pizza</a></h3>
 		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-		              					<p class="price"><span>$2.90</span></p>
-		              					<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
+		              					<p class="price"><span>₹2.90</span></p>
+		              					<p><button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button></p></p>
 		              				</div>
 		              			</div>
 		              		</div>
@@ -370,8 +305,8 @@
 		              				<div class="text">
 		              					<h3><a href="#">Itallian Pizza</a></h3>
 		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-		              					<p class="price"><span>$2.90</span></p>
-		              					<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
+		              					<p class="price"><span>₹2.90</span></p>
+		              					<p><button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button></p></p>
 		              				</div>
 		              			</div>
 		              		</div>
@@ -381,8 +316,8 @@
 		              				<div class="text">
 		              					<h3><a href="#">Itallian Pizza</a></h3>
 		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-		              					<p class="price"><span>$2.90</span></p>
-		              					<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
+		              					<p class="price"><span>₹2.90</span></p>
+		              					<p><button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button></p></p>
 		              				</div>
 		              			</div>
 		              		</div>
