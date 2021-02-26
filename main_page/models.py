@@ -1,3 +1,5 @@
+
+
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
@@ -45,6 +47,9 @@ class Order(models.Model):
 	def shipping(self):
 		shipping = False
 		orderitems = self.orderitem_set.all()
+		for i in orderitems:
+			if i.product.digital == False:
+				shipping = True
 		return shipping
 
 

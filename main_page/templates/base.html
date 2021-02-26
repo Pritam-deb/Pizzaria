@@ -95,12 +95,14 @@ console.log('Cart:', cart)
 	        <ul class="navbar-nav ml-auto">
 	          <li class="nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
 	          <li class="nav-item {% if request.resolver_match.url_name == 'menu' %}active{% endif %}"><a href="{% url 'menu' %}" class="nav-link">Menu</a></li>
-	          <li class="nav-item {% if request.resolver_match.url_name == 'services' %}active{% endif %}"><a href="{% url 'services' %}" class="nav-link">Services</a></li>
-            <li class="nav-item {% if request.resolver_match.url_name == 'blog' %}active{% endif %}"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
-	          <li class="nav-item {% if request.resolver_match.url_name == 'contact' %}active{% endif %}"><a href="{% url 'contact' %}" class="nav-link">Contact Us</a></li>
-            <li class="nav-item {% if request.resolver_match.url_name == 'about' %}active{% endif %}"><a href="{% url 'about' %}" class="nav-link">About Us</a></li>
+            <li class="nav-item {% if request.resolver_match.url_name == 'contact' %}active{% endif %}"><a href="{% url 'contact' %}" class="nav-link">Contact Us</a></li>
+
             <li class="nav-item {% if request.resolver_match.url_name == 'register' %}active{% endif %}"><a href="{% url 'register' %}" class="nav-link">Register</a></li>
             <li class="nav-item {% if request.resolver_match.url_name == 'login' %}active{% endif %}"><a href="{% url 'login' %}" class="nav-link">Log-In</a></li>
+	          <!--<li class="nav-item {% if request.resolver_match.url_name == 'services' %}active{% endif %}"><a href="{% url 'services' %}" class="nav-link">Services</a></li>
+            <li class="nav-item {% if request.resolver_match.url_name == 'blog' %}active{% endif %}"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
+            <li class="nav-item {% if request.resolver_match.url_name == 'about' %}active{% endif %}"><a href="{% url 'about' %}" class="nav-link">About Us</a></li>
+            -->
 
 	        </ul>
 	      </div>
@@ -184,11 +186,11 @@ console.log('Cart:', cart)
       <div class="col-lg-3 col-md-6 mb-5 mb-md-5">
         <div class="ftco-footer-widget mb-4">
           <h2 class="ftco-heading-2">Got Questions?</h2>
-          <div class="block-23 mb-3">
+          <div class="block-23 mb-3" style="width:300px">
             <ul>
               <li><span class="icon icon-map-marker"></span><span class="text">Shillong Times 1st floor, Rilbong, Shillong-793004, Meghalaya, India</span></li>
               <li><a href="tel://+91 961 255 0369"><span class="icon icon-phone"></span><span class="text">+91 961 255 0369</span></a></li>
-              <li><a href="mailto:pritamdebnath297@gmail.com"><span class="icon icon-envelope"></span> <span class="text">pritamdebnath297@gmail.com</span></a></li>
+              <li><i class="icon icon-envelope"></i><a href="mailto:pritamdebnath297@gmail.com"> <span class="text">   pritamdebnath297@gmail.com</span></a></li>
             </ul>
           </div>
         </div>
@@ -226,7 +228,7 @@ Made with<i class="icon-heart" aria-hidden="true"></i> by Pritam and Shivam</a>
 <script src="{% static 'main_page/js/jquery.timepicker.min.js' %}"></script>
 <script src="{% static 'main_page/js/scrollax.min.js' %}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="{% static 'main_page/js/google-map.js' %}"></script>
+<!-- <script src="{% static 'main_page/js/google-map.js' %}"></script> -->
 <script src="{% static 'main_page/js/main.js' %}"></script>
 <script src="{% static 'main_page/js/cart.js' %}"></script>
 </body>

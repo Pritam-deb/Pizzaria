@@ -5,6 +5,7 @@ from django.contrib import messages #import messages
 import json
 import datetime
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import Group
 from django.contrib.auth import authenticate, login, logout
 #from django.shortcuts import render
 from django.core.mail import send_mail
@@ -23,6 +24,14 @@ def registerPage(request):
         if form.is_valid():
             form.save()
             user = form.cleaned_data.get('username')
+            group = Group.objects.get(name='customer')
+            user.groups.add(group)
+            #Added username after video because of error returning customer name if not added
+            Customer.objects.create(
+                user=user,
+                name=user.username,
+                )
+
             messages.success(request, 'Account was created for '+user)
             return redirect('login')
     context = {'form':form}
