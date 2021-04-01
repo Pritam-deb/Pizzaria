@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+  <head>
+    <title>Pizzaria - Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'main_page/css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main_page/css/animate.css' %}">
+
+    <link rel="stylesheet" href="{% static 'main_page/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main_page/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main_page/css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'main_page/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'main_page/css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'main_page/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'main_page/css/jquery.timepicker.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'main_page/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'main_page/css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'main_page/css/style.css' %}">
+    <script type="text/javascript">
+		var user = '{{request.user}}'
+    function getToken(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getToken('csrftoken');
+
+function getCookie(name) {
+    // Split cookie string and get all individual name=value pairs in an array
+    var cookieArr = document.cookie.split(";");
+
+    // Loop through the array elements
+    for(var i = 0; i < cookieArr.length; i++) {
+        var cookiePair = cookieArr[i].split("=");
+
+        /* Removing whitespace at the beginning of the cookie name
+        and compare it with the given string */
+        if(name == cookiePair[0].trim()) {
+            // Decode the cookie value and return
+            return decodeURIComponent(cookiePair[1]);
+        }
+    }
+
+    // Return null if not found
+    return null;
+}
+var cart = JSON.parse(getCookie('cart'))
+
+if (cart == undefined){
+  cart = {}
+  console.log('Cart Created!', cart)
+  document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+}
+console.log('Cart:', cart)
+
+
+    </script>
+  </head>
+  <body>
+  	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <span id='hello-msg'>Hello, {{request.user}}</span>
+      <div class="form-inline my-2 my-lg-0">
+        <span><a href="{% url 'logout' %}" class="btn btn-warning">Logout</a></span>
+      </div>
+      <div class="container">
+
+		      <a class="navbar-brand" href="main_page.html"><span class="flaticon-pizza-1 mr-1"></span>Pizzaria<br><small>Umami</small></a>
+		      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+		        <span class="oi oi-menu"></span> Expand
+		      </button>
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+            <li class="nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+           <li class="nav-item {% if request.resolver_match.url_name == 'menu' %}active{% endif %}"><a href="{% url 'menu' %}" class="nav-link">Menu</a></li>
+            <li class="nav-item {% if request.resolver_match.url_name == 'contact' %}active{% endif %}"><a href="{% url 'contact' %}" class="nav-link">Contact Us</a></li>
+
+            <li class="nav-item {% if request.resolver_match.url_name == 'register' %}active{% endif %}"><a href="{% url 'register' %}" class="nav-link">Register</a></li>
+            <li class="nav-item {% if request.resolver_match.url_name == 'login' %}active{% endif %}"><a href="{% url 'login' %}" class="nav-link">Log-In</a></li>
+           <!--<li class="nav-item {% if request.resolver_match.url_name == 'services' %}active{% endif %}"><a href="{% url 'services' %}" class="nav-link">Services</a></li>
+            <li class="nav-item {% if request.resolver_match.url_name == 'blog' %}active{% endif %}"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
+            <li class="nav-item {% if request.resolver_match.url_name == 'about' %}active{% endif %}"><a href="{% url 'about' %}" class="nav-link">About Us</a></li>
+            -->
+	        </ul>
+	      </div>
+
+        <div class="form-inline my-2 my-lg-0">
+
+
+            <a href="{% url 'cart' %}">
+         <img  id="cart-icon" src="{% static 'main_page/images/cart.png' %}">
+          </a>
+          <p id="cart-total">{{cartItems}}</p>
+
+        </div>
+
+		  </div>
+	  </nav>
+    <!-- END nav -->
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+	<style>
+
+
+
+
+
+
+		.login_btn {
+			width: 100%;
+			background: #edc42f !important;
+			color: white !important;
+		}
+
+
+		.input-group-text {
+			background: #f7ba5b !important;
+			color: white !important;
+			border: 0 !important;
+			border-radius: 0.25rem 0 0 0.25rem !important;
+		}
+		.input_user,
+		.input_pass:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+
+	</style>
+
+
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+
+
+					<h3 id="form-title">LOGIN</h3>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+					<form method="POST" action="">
+            {% csrf_token %}
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+
+							<input type="text" name="username" placeholder="Username..." class="form-control">
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+
+								<input type="password" name="password" placeholder="Password..." class="form-control" >
+						</div>
+
+							<div class="d-flex justify-content-center mt-3 login_container">
+				 				<input class="btn login_btn" type="submit" value="Login">
+				   			</div>
+					</form>
+
+				</div>
+        {% for message in messages %}
+              <p id="messages">{{message}}</p>
+        {% endfor %}
+				<div class="mt-4">
+					<div class="d-flex justify-content-center links">
+						Don't have an account? <a href="{% url 'register' %}" class="ml-2">Sign Up</a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<footer class="ftco-footer ftco-section img">
+	  <div class="overlay"></div>
+	  <div class="container">
+	    <div class="row mb-5">
+	      <div class="col-lg-3 col-md-6 mb-5 mb-md-5">
+	        <div class="ftco-footer-widget mb-4">
+	          <h2 class="ftco-heading-2">About Us</h2>
+	          <p>we are dead from inside</p>
+	          <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+	            <li class="ftco-animate"><a href="https://twitter.com/PritamDebnath_"><span class="icon-twitter"></span></a></li>
+	            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+	            <li class="ftco-animate"><a href="https://www.instagram.com/pritamdebnath_/"><span class="icon-instagram"></span></a></li>
+	          </ul>
+	        </div>
+	      </div>
+	      <div class="col-lg-4 col-md-6 mb-5 mb-md-5">
+	        <div class="ftco-footer-widget mb-4">
+	          <h2 class="ftco-heading-2">Recent Blog</h2>
+	          <div class="block-21 mb-4 d-flex">
+	            <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+	            <div class="text">
+	              <h3 class="heading"><a href="#">nice review</a></h3>
+	              <div class="meta">
+	                <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
+	                <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+	                <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+	              </div>
+	            </div>
+	          </div>
+	          <div class="block-21 mb-4 d-flex">
+	            <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
+	            <div class="text">
+	              <h3 class="heading"><a href="#">nice review</a></h3>
+	              <div class="meta">
+	                <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
+	                <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+	                <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	      <div class="col-lg-2 col-md-6 mb-5 mb-md-5">
+	         <div class="ftco-footer-widget mb-4 ml-md-4">
+	          <h2 class="ftco-heading-2">Services</h2>
+	          <ul class="list-unstyled">
+	            <li><a href="#" class="py-2 d-block">Cooked</a></li>
+	            <li><a href="#" class="py-2 d-block">Deliver</a></li>
+	            <li><a href="#" class="py-2 d-block">Quality Foods</a></li>
+	            <li><a href="#" class="py-2 d-block">Dine-in</a></li>
+	          </ul>
+	        </div>
+	      </div>
+	      <div class="col-lg-3 col-md-6 mb-5 mb-md-5">
+	        <div class="ftco-footer-widget mb-4">
+	          <h2 class="ftco-heading-2">Got Questions?</h2>
+	          <div class="block-23 mb-3">
+	            <ul>
+	              <li><span class="icon icon-map-marker"></span><span class="text">Shillong Times 1st floor, Rilbong, Shillong-793004, Meghalaya, India</span></li>
+	              <li><a href="#"><span class="icon icon-phone"></span><span class="text">+91 961 255 0369</span></a></li>
+	              <li><a href="#"><span class="icon icon-envelope"></span><span class="text">pritamdebnath297@gmail.com</span></a></li>
+	            </ul>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-md-12 text-center">
+
+	        <p>
+	Made with<i class="icon-heart" aria-hidden="true"></i> by Pritam and Shivam</a>
+	</p>
+	      </div>
+	    </div>
+	  </div>
+	</footer>
+
+
+
+
+	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+	<script src="{% static 'main_page/js/jquery.min.js' %}"></script>
+	<script src="{% static 'main_page/js/jquery-migrate-3.0.1.min.js' %}"></script>
+	<script src="{% static 'main_page/js/popper.min.js' %}"></script>
+	<script src="{% static 'main_page/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'main_page/js/jquery.easing.1.3.js' %}"></script>
+	<script src="{% static 'main_page/js/jquery.waypoints.min.js' %}"></script>
+	<script src="{% static 'main_page/js/jquery.stellar.min.js' %}"></script>
+	<script src="{% static 'main_page/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'main_page/js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'main_page/js/aos.js' %}"></script>
+	<script src="{% static 'main_page/js/jquery.animateNumber.min.js' %}"></script>
+	<script src="{% static 'main_page/js/bootstrap-datepicker.js' %}"></script>
+	<script src="{% static 'main_page/js/jquery.timepicker.min.js' %}"></script>
+	<script src="{% static 'main_page/js/scrollax.min.js' %}"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="{% static 'main_page/js/google-map.js' %}"></script>
+	<script src="{% static 'main_page/js/main.js' %}"></script>
+	<script src="{% static 'main_page/js/cart.js' %}"></script>
+	</body>
+	</html>
